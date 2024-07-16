@@ -26,16 +26,18 @@ void headInsert(Node* list, int data)
 
 void tailInsert(Node* list, int data)
 {
-    Node* head = list;
     Node* node = (Node*)malloc(sizeof(Node));
     node->data = data;
     node->next = NULL;
-    list = list->next;
+
+    Node* head = list;
+
     while (list->next)
     {
         list = list->next;
     }
     list->next = node;
+
     head->data++;
 }
 
@@ -71,11 +73,11 @@ void printList(Node* list)
 int main()
 {
     Node* list = initList();
-    headInsert(list, 1);
-    headInsert(list, 2);
-    headInsert(list, 3);
-    headInsert(list, 4);
-    headInsert(list, 5);
+    // headInsert(list, 1);
+    // headInsert(list, 2);
+    // headInsert(list, 3);
+    // headInsert(list, 4);
+    // headInsert(list, 5);
     tailInsert(list, 6);
     tailInsert(list, 7);
     tailInsert(list, 8);
