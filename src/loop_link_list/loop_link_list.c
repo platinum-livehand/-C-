@@ -15,6 +15,7 @@ Node* initList()
     Node* head = (Node*)malloc(sizeof(Node));
     head->data = 0;
     head->next = head;
+
     return head; 
 }
 
@@ -23,7 +24,10 @@ void headInsert(Node* list, int data)
     Node* node = (Node*)malloc(sizeof(Node));
     node->data = data;
     node->next = list->next;
+
     list->next = node;
+
+    list->data++;
 }
 
 void tailInsert(Node* list, int data)
@@ -38,6 +42,8 @@ void tailInsert(Node* list, int data)
     }
     node->next = list;
     iterator->next = node;
+
+    list->data++;
 }
 
 int delete(Node* list, int data)
@@ -51,11 +57,15 @@ int delete(Node* list, int data)
         {
             pre->next = iterator->next;
             free(iterator);
+
+            list->data--;
+
             return TRUE;
         }
         pre = iterator;
         iterator = iterator->next;
     }
+
     return FALSE;
 }
 
@@ -78,11 +88,15 @@ int main()
     headInsert(list, 3);
     headInsert(list, 4);
     headInsert(list, 5);
+    printList(list);
+
     tailInsert(list, 6);
     tailInsert(list, 7);
     printList(list);
+
     delete(list, 5);
     delete(list, 7);
     printList(list);
+    
     return 0;
 }

@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define TRUE 1
+#define FALSE 0
+
 typedef struct Node 
 {
     int data;
@@ -12,6 +15,7 @@ Node* initList()
     Node* list = (Node*)malloc(sizeof(Node));
     list->data = 0;
     list->next = NULL;
+
     return list;
 }
 
@@ -20,6 +24,7 @@ void headInsert(Node* list, int data)
     Node* node = (Node*)malloc(sizeof(Node));
     node->data = data;
     node->next = list->next;
+
     list->next = node;
     list->data++;
 }
@@ -30,18 +35,18 @@ void tailInsert(Node* list, int data)
     node->data = data;
     node->next = NULL;
 
-    Node* head = list;
+    Node* iterator = list;
 
-    while (list->next)
+    while (iterator->next)
     {
-        list = list->next;
+        iterator = iterator->next;
     }
-    list->next = node;
+    iterator->next = node;
 
-    head->data++;
+    list->data++;
 }
 
-void delete(Node* list, int data)
+int delete(Node* list, int data)
 {
     Node* pre = list;
     Node* current = list->next;
@@ -50,13 +55,20 @@ void delete(Node* list, int data)
         if(current->data == data)
         {
             pre->next = current->next;
+
             free(current);
-            break;
+
+            list->data--;
+
+            return TRUE;
         }
+
         pre = current;
+
         current = current->next;
     }
-    list->data--;
+
+    return FALSE;
 }
 
 void printList(Node* list)
@@ -64,29 +76,35 @@ void printList(Node* list)
     list = list->next;
     while(list)
     {
-        printf("%d ", list->data);
+        printf("%d->", list->data);
+
         list = list->next;
     }
-    printf("\n");
+    
+    printf("NULL\n");
 }
 
 int main()
 {
     Node* list = initList();
-    // headInsert(list, 1);
-    // headInsert(list, 2);
-    // headInsert(list, 3);
-    // headInsert(list, 4);
-    // headInsert(list, 5);
+    headInsert(list, 1);
+    headInsert(list, 2);
+    headInsert(list, 3);
+    headInsert(list, 4);
+    headInsert(list, 5);
+    printList(list);
+
     tailInsert(list, 6);
     tailInsert(list, 7);
     tailInsert(list, 8);
     tailInsert(list, 9);
     tailInsert(list, 10);
     printList(list);
+
     delete(list, 5);
     delete(list, 10);
     delete(list, 6);
     printList(list);
+
     return 0;
 }
