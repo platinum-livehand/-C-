@@ -14,15 +14,18 @@ typedef struct Node
 Node* initList()
 {
     Node* node = (Node*)malloc(sizeof(Node));
+
     node->data = 0;
     node->next = NULL;
     node->pre = NULL;
+    
     return node;
 }
 
 void headInsert(Node* list, int data)
 {
     Node* node = (Node*)malloc(sizeof(Node));
+
     node->data = data;
     node->pre = list;
     node->next = list->next;
@@ -39,6 +42,7 @@ void headInsert(Node* list, int data)
 void tailInsert(Node* list, int data)
 {
     Node* node = (Node*)malloc(sizeof(Node));
+    
     node->data = data;
 
     Node* iterator = list;

@@ -12,11 +12,12 @@ typedef struct Node
 
 Node* initList() 
 {
-    Node* list = (Node*)malloc(sizeof(Node));
-    list->data = 0;
-    list->next = NULL;
+    Node* node = (Node*)malloc(sizeof(Node));
 
-    return list;
+    node->data = 0;
+    node->next = NULL;
+
+    return node;
 }
 
 void headInsert(Node* list, int data)
@@ -32,6 +33,7 @@ void headInsert(Node* list, int data)
 void tailInsert(Node* list, int data)
 {
     Node* node = (Node*)malloc(sizeof(Node));
+    
     node->data = data;
     node->next = NULL;
 
