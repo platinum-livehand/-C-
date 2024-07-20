@@ -4,7 +4,7 @@ project(data_structure
     VERSION 0.0.1
     DESCRIPTION "Data Structure based on C"
     HOMEPAGE_URL "https://github.com/platinum-livehand/Data-Structure.git"
-    LANGUAGES C
+    LANGUAGES C CXX
 )
 
 # 检测操作系统
@@ -38,21 +38,20 @@ else()
     message(STATUS "host processor architecture is unknown")
 endif()
 
-# 当前使用的编译器以及版本
-# message(STATUS "CMAKE_CXX_COMPILER: ${CMAKE_CXX_COMPILER_ID}")
-# message(STATUS "CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
-message(STATUS "CMAKE_C_COMPILER: ${CMAKE_C_COMPILER_ID}")
-message(STATUS "MAKE_C_COMPILER_VERSION: ${CMAKE_C_COMPILER_VERSION}")
+# 当前使用的编译器、版本以及标准
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+message(STATUS "The C++ complier identification is ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
+message(STATUS "The C++ standard is C++${CMAKE_CXX_STANDARD}")
 
-# 设置C语言标准
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_EXTENSIONS OFF)
 set(CMAKE_C_STANDARD_REQUIRED ON)
-message(STATUS "C_STANDARD: ${CMAKE_C_STANDARD}")
+message(STATUS "The C complier identification is ${CMAKE_C_COMPILER_ID} ${CMAKE_C_COMPILER_VERSION}")
+message(STATUS "The C standard is C${CMAKE_C_STANDARD}")
 
-# # 查看编译类型
-# message(STATUS "CMAKE_BUILD_TYPE : ${CMAKE_BUILD_TYPE}")
-
+# 查看编译类型
 if(CMAKE_BUILD_TYPE AND (CMAKE_BUILD_TYPE STREQUAL "Debug"))
     set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -Wall -O0")
     # DEBUG 输出目录
