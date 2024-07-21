@@ -20,7 +20,7 @@ Node* initStack()
 
 int isEmpty(Node* stack)
 {
-    if(stack->data ==0 || stack->next == NULL)  
+    if(stack->data == 0 || stack->next == NULL)  
         return 1;
     else
         return 0;
