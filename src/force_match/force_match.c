@@ -26,11 +26,10 @@ void stringAssign(String* string, const char* data)
     const char* temp = data;
     while (*temp)
     {
-        len++;
         temp++;
+        len++;
     }
 
-    string->len = len;
     if (len == 0)
     {
         string->data = NULL;
@@ -38,26 +37,21 @@ void stringAssign(String* string, const char* data)
     else
     {
         string->data = (char*)malloc(sizeof(char) * (len + 1));
-        for (int i = 0; i < string->len; i++)
+        for (int i = 0; i < len; i++)
         {
             string->data[i] = data[i];
         }
-        string->data[string->len] = '\0';  // 添加字符串终止符
+        string->data[len] = '\0';  // 添加字符串终止符
     }
+
+    string->len = len;
 }
 
 void printString(String* string)
 {
     for (int i = 0; i < string->len; i++)
     {
-        if (i == 0)
-        {
-            printf("%c", string->data[i]);
-        }
-        else
-        {
-            printf("-> %c", string->data[i]);
-        }
+        printf(i == 0 ? "%c " : "-> %c", string->data[i]);
     }
     printf("\n");
 }

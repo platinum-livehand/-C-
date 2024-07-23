@@ -92,21 +92,57 @@ void printQueue(Queue* queue)
 
 int main()
 {
+    // 初始化队列
     Queue* queue = initQueue();
-    
-    for (int i = 1; isFull(queue) != TRUE; i++)
+
+    // 入队操作
+    enQueue(queue, 10);
+    enQueue(queue, 20);
+    enQueue(queue, 30);
+    enQueue(queue, 40);
+
+    // 打印队列内容
+    printf("当前队列内容: ");
+    printQueue(queue);
+
+    // 尝试入队直到队列满
+    if (!enQueue(queue, 50))
     {
-        enQueue(queue, i);
-        printf("The push data is %d.\n", i);
-        printQueue(queue);
+        printf("队列已满，无法加入元素50\n");
     }
-    
-    while (!isEmpty(queue))
-    {   
-        int data = deQueue(queue);
-        printf("The pop data is %d.\n", data);
-        printQueue(queue);
+
+    // 打印队列内容
+    printf("当前队列内容: ");
+    printQueue(queue);
+
+    // 出队操作并打印
+    printf("出队元素: %d\n", deQueue(queue));
+    printf("出队元素: %d\n", deQueue(queue));
+
+    // 打印队列内容
+    printf("当前队列内容: ");
+    printQueue(queue);
+
+    // 继续入队操作
+    enQueue(queue, 50);
+    enQueue(queue, 60);
+
+    // 打印队列内容
+    printf("当前队列内容: ");
+    printQueue(queue);
+
+    // 尝试入队直到队列满
+    if (!enQueue(queue, 70))
+    {
+        printf("队列已满，无法加入元素70\n");
     }
+
+    // 打印队列内容
+    printf("当前队列内容: ");
+    printQueue(queue);
+
+    // 释放队列内存
+    free(queue);
     
     return 0;
 }

@@ -72,25 +72,40 @@ void printStack(Node* stack)
 
 int main()
 {
+    // 初始化栈
     Node* stack = initStack();
-    push(stack, 1);
-    push(stack, 2);
-    push(stack, 3);
-    push(stack, 4);
-    push(stack, 5);
+
+    // 压入元素
+    push(stack, 10);
+    push(stack, 20);
+    push(stack, 30);
+
+    // 打印栈内容
+    printf("当前栈内容: ");
     printStack(stack);
 
-    int stack_element_1 = pop(stack);
-    printf("The pop element is %d.\n", stack_element_1);
-    int stack_element_2 = pop(stack);
-    printf("The pop element is %d.\n", stack_element_2);
+    // 弹出元素并打印
+    printf("弹出元素: %d\n", pop(stack));
+    printf("弹出元素: %d\n", pop(stack));
+    
+    // 打印栈内容
+    printf("当前栈内容: ");
     printStack(stack);
 
-    while (pop(stack) != ERRORS)
+    // 再次压入元素
+    push(stack, 40);
+    push(stack, 50);
+
+    // 打印栈内容
+    printf("当前栈内容: ");
+    printStack(stack);
+
+    // 释放栈内存
+    while (!isEmpty(stack))
     {
-        printStack(stack);
+        pop(stack);
     }
-    printf("The stack is empty!");
+    free(stack);
     
     return 0;
 }
