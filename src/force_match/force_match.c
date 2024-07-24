@@ -87,29 +87,28 @@ void forceMatch(String* master, String* sub)
 
 int main()
 {
-    char master[100];
-    printf("请输入 master 字符串：");
-    scanf("%s", master);  // 使用 %s 读取字符串
+    // 初始化字符串
+    String* master = initString();
+    String* sub = initString();
 
-    char sub[100];
-    printf("请输入 sub 字符串：");
-    scanf("%s", sub);  // 使用 %s 读取字符串
+    // 分配字符串值
+    stringAssign(master, "Hello, this is a simple string.");
+    stringAssign(sub, "simple");
 
-    String* masterString = initString();
-    String* subString = initString();
+    // 打印字符串
+    printf("主字符串: ");
+    printString(master);
+    printf("子字符串: ");
+    printString(sub);
 
-    stringAssign(masterString, master);
-    stringAssign(subString, sub);
-
-    printString(masterString);
-
-    forceMatch(masterString, subString);
+    // 强制匹配
+    forceMatch(master, sub);
 
     // 释放内存
-    free(masterString->data);
-    free(masterString);
-    free(subString->data);
-    free(subString);
-
+    free(master->data);
+    free(sub->data);
+    free(master);
+    free(sub);
+    
     return 0;
 }

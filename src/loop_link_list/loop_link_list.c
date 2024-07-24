@@ -76,7 +76,7 @@ void printList(Node* list)
     Node* iterator = list->next;
     while (iterator != list)
     {
-        printf("%d->", iterator->data);
+        printf(" %d-> ", iterator->data);
         iterator = iterator->next;
     }
     printf("NULL\n");
@@ -84,21 +84,44 @@ void printList(Node* list)
 
 int main()
 {
+    // 初始化链表
     Node* list = initList();
-    headInsert(list, 1);
-    headInsert(list, 2);
+    printf("初始化链表: ");
+    printList(list);
+
+    // 头插法插入元素
     headInsert(list, 3);
-    headInsert(list, 4);
-    headInsert(list, 5);
+    headInsert(list, 2);
+    headInsert(list, 1);
+    printf("头插法插入 1, 2, 3: ");
     printList(list);
 
+    // 尾插法插入元素
+    tailInsert(list, 4);
+    tailInsert(list, 5);
     tailInsert(list, 6);
-    tailInsert(list, 7);
+    printf("尾插法插入 4, 5, 6: ");
     printList(list);
 
-    delete(list, 5);
-    delete(list, 7);
+    // 删除元素
+    delete(list, 1);
+    printf("删除元素 1: ");
     printList(list);
+
+    delete(list, 4);
+    printf("删除元素 4: ");
+    printList(list);
+
+    delete(list, 6);
+    printf("删除元素 6: ");
+    printList(list);
+
+    // 释放链表内存
+    while (list->next != list)
+    {
+        delete(list, list->next->data);
+    }
+    free(list);
     
     return 0;
 }

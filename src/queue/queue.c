@@ -89,20 +89,42 @@ void printQueue(Node* queue)
 
 int main()
 {
+    // 初始化队列
     Node* queue = initQueue();
+    printf("初始化队列: ");
+    printQueue(queue);
+
+    // 入队
     enQueue(queue, 1);
     enQueue(queue, 2);
     enQueue(queue, 3);
-    enQueue(queue, 4);
-    enQueue(queue, 5);
+    printf("入队 1, 2, 3: ");
     printQueue(queue);
 
-    while (queue->next)
-    {
-        int data = deQueue(queue);
-        printQueue(queue);
-        printf("The pop data is %d.\n",data);
-    }
+    // 出队
+    int dequeued = deQueue(queue);
+    if (dequeued != ERRORS)
+        printf("出队元素: %d\n", dequeued);
+    printf("出队后: ");
+    printQueue(queue);
+
+    dequeued = deQueue(queue);
+    if (dequeued != ERRORS)
+        printf("出队元素: %d\n", dequeued);
+    printf("出队后: ");
+    printQueue(queue);
+
+    dequeued = deQueue(queue);
+    if (dequeued != ERRORS)
+        printf("出队元素: %d\n", dequeued);
+    printf("出队后: ");
+    printQueue(queue);
+
+    // 检查队列是否为空
+    if (isEmpty(queue))
+        printf("队列为空\n");
+    else
+        printf("队列不为空\n");
 
     return 0;
 }

@@ -88,24 +88,36 @@ void printList(Node* list)
 
 int main()
 {
+    // 初始化链表
     Node* list = initList();
-    headInsert(list, 1);
-    headInsert(list, 2);
+    printf("初始化链表: ");
+    printList(list);
+
+    // 头插法插入元素
     headInsert(list, 3);
-    headInsert(list, 4);
-    headInsert(list, 5);
+    headInsert(list, 2);
+    headInsert(list, 1);
+    printf("头插法插入 1, 2, 3: ");
     printList(list);
 
+    // 尾插法插入元素
+    tailInsert(list, 4);
+    tailInsert(list, 5);
     tailInsert(list, 6);
-    tailInsert(list, 7);
-    tailInsert(list, 8);
-    tailInsert(list, 9);
-    tailInsert(list, 10);
+    printf("尾插法插入 4, 5, 6: ");
     printList(list);
 
-    delete(list, 5);
-    delete(list, 10);
+    // 删除元素
+    delete(list, 1);
+    printf("删除元素 1: ");
+    printList(list);
+
+    delete(list, 4);
+    printf("删除元素 4: ");
+    printList(list);
+
     delete(list, 6);
+    printf("删除元素 6: ");
     printList(list);
 
     return 0;
