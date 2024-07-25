@@ -42,16 +42,19 @@ void tailInsert(Node* list, int data)
 
     node->data = data;
     
-    Node* iterator = list;
-    while (iterator->next != list)
-    {
-        iterator = iterator->next;
-    }
-    iterator->next->pre = node;
-    iterator->next = node;
-
-    node->pre = iterator;
+    // Node* iterator = list;
+    // while (iterator->next != list)
+    // {
+    //     iterator = iterator->next;
+    // }
+    // iterator->next->pre = node;
+    // iterator->next = node;
+    // node->pre = iterator;
+    node->pre = list->pre;
     node->next = list;
+
+    list->pre->next = node;
+    list->pre = node;
 
     list->data++;
 }

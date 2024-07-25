@@ -1,14 +1,21 @@
-project(source_file)
+project(source_file)  
 
-add_subdirectory(hello_Linux)
-add_subdirectory(hello_data_structure)
-add_subdirectory(single_link_list)
-add_subdirectory(loop_link_list)
-add_subdirectory(double_link_list)
-add_subdirectory(double_loop_link_list)
-add_subdirectory(stack)
-add_subdirectory(queue)
-add_subdirectory(loop_queue)
-add_subdirectory(force_match)
-add_subdirectory(kmp)
-add_subdirectory(tree)
+set(PROJECT_SUBDIRECTORIES  
+    hello_Linux  
+    hello_data_structure  
+    single_link_list  
+    loop_link_list  
+    double_link_list  
+    double_loop_link_list  
+    stack  
+    queue  
+    loop_queue  
+    force_match  
+    kmp  
+    tree  
+    tree_level_traverse  
+)  
+
+foreach(project_subdir  ${PROJECT_SUBDIRECTORIES})  
+    add_subdirectory(${project_subdir})  
+endforeach()
