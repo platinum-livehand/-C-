@@ -1,0 +1,17 @@
+{
+    "cmake.cmakePath": "/usr/bin/cmake",
+    "cmake.generator": "Unix Makefiles",
+    "cmake.configureOnOpen": true,
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.sourceDirectory": "${workspaceFolder}",
+    "cmake.defaultBuildType": "Debug",
+    "cmake.loggingLevel": "DEBUG",
+    "cmake.configureArgs": [
+      "-DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE",
+      "-DCMAKE_C_COMPILER=/usr/bin/gcc",
+      "-DCMAKE_CXX_COMPILER=/usr/bin/g++"
+    ],
+    "cmake.buildArgs": [],
+    "cmake.buildToolArgs": []
+  }
+  
