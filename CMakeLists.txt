@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28.0)
+cmake_minimum_required(VERSION 3.16.0)
 
 project(data_structure
     VERSION 0.0.1
