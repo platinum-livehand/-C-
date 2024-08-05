@@ -108,15 +108,15 @@ int main()
 
     createTree(&root, data, &index);
 
-    printf("前序遍历: ");
+    printf("前序遍历: \n");
     preOrder(root);
     printf("\n");
 
-    printf("中序遍历: ");
+    printf("中序遍历: \n");
     inOrder(root);
     printf("\n");
 
-    printf("后序遍历: ");
+    printf("后序遍历: \n");
     postOrder(root);
     printf("\n");
 

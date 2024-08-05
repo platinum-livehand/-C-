@@ -11,6 +11,7 @@ typedef struct TreeNode
     struct TreeNode* rchild;
 }TreeNode;
 
+// 循环队列
 typedef struct QueueNode
 {
     int num;
@@ -98,6 +99,7 @@ int isEmpty(QueueNode* qNode)
     }
 }
 
+// 进队——尾插
 void enQueue(TreeNode* tNode, QueueNode* qNode)
 {
     QueueNode* tempNode = (QueueNode*)malloc(sizeof(QueueNode));
@@ -112,6 +114,7 @@ void enQueue(TreeNode* tNode, QueueNode* qNode)
     qNode->num++;
 }
 
+// 出队——先进先出
 QueueNode* deQueue(QueueNode* qNode)
 {
     if(isEmpty(qNode))
@@ -130,6 +133,7 @@ QueueNode* deQueue(QueueNode* qNode)
     }
 }
 
+// 层次遍历
 void levelTraverse(TreeNode* tNode, QueueNode* qNode)
 {
     enQueue(tNode, qNode);
@@ -160,11 +164,11 @@ int main()
 
     createTree(&root, data, &index);
 
-    printf("前序遍历: ");
+    printf("前序遍历: \n");
     preOrder(root);
     printf("\n");
 
-    printf("层次遍历: ");
+    printf("层次遍历: \n");
     levelTraverse(root, queue);
     printf("\n");
 

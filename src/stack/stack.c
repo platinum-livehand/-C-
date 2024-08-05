@@ -26,6 +26,7 @@ int isEmpty(Node* stack)
         return 0;
 }
 
+// 出栈——先进后出
 int pop(Node* stack)
 {
     if (isEmpty(stack))
@@ -48,6 +49,7 @@ int pop(Node* stack)
     }
 }
 
+// 压栈——头插
 void push(Node* stack, int data)
 {
     Node* node = (Node*)malloc(sizeof(Node));
@@ -64,7 +66,7 @@ void printStack(Node* stack)
     Node* iterator = stack->next;
     while (iterator)
     {
-        printf("%d->", iterator->data);
+        printf("%d -> ", iterator->data);
         iterator = iterator->next;
     }
     printf("NULL\n");
@@ -81,7 +83,7 @@ int main()
     push(stack, 30);
 
     // 打印栈内容
-    printf("当前栈内容: ");
+    printf("当前栈内容: \n");
     printStack(stack);
 
     // 弹出元素并打印
@@ -89,7 +91,7 @@ int main()
     printf("弹出元素: %d\n", pop(stack));
     
     // 打印栈内容
-    printf("当前栈内容: ");
+    printf("当前栈内容: \n");
     printStack(stack);
 
     // 再次压入元素
@@ -97,7 +99,7 @@ int main()
     push(stack, 50);
 
     // 打印栈内容
-    printf("当前栈内容: ");
+    printf("当前栈内容: \n");
     printStack(stack);
 
     // 释放栈内存

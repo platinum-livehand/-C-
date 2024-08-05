@@ -51,7 +51,7 @@ void printString(String* string)
 {
     for (int i = 0; i < string->len; i++)
     {
-        printf(i == 0 ? "%c " : "-> %c", string->data[i]);
+        printf(i == 0 ? "%c " : " -> %c", string->data[i]);
     }
     printf("\n");
 }
@@ -96,9 +96,9 @@ int main()
     stringAssign(sub, "simple");
 
     // 打印字符串
-    printf("主字符串: ");
+    printf("主字符串: \n");
     printString(master);
-    printf("子字符串: ");
+    printf("子字符串: \n");
     printString(sub);
 
     // 强制匹配

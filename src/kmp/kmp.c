@@ -56,7 +56,7 @@ void printString(String* string)
 {
     for (int i = 0; i < string->len; i++)
     {
-        printf(i == 0 ? " %c" : "-> %c", string->data[i]);
+        printf(i == 0 ? " %c" : " -> %c", string->data[i]);
     }
     printf("\n");
 }
@@ -65,7 +65,7 @@ void printNext(int* next, int len)
 {
     for (int i = 0; i < len; i++)
     {
-        printf(i == 0 ? " %d" : "-> %d", next[i]); // %d 读取数据
+        printf(i == 0 ? " %d" : " -> %d", next[i]); // %d 读取数据
     }
     printf("\n");
 }
@@ -102,7 +102,7 @@ void kmpMatch(String* master, String* sub, int* next)
     int j = 0;
     while (i < master->len && j < sub->len)
     {
-        if (master->data[i] == sub->data[j] || j == -1)
+        if (j == -1 || master->data[i] == sub->data[j])
         {
             i++;
             j++;
@@ -134,15 +134,15 @@ int main()
     stringAssign(sub, "abc ac");
 
     // 打印主串和子串
-    printf("主串:");
+    printf("主串：\n");
     printString(master);
 
-    printf("子串:");
+    printf("子串：\n");
     printString(sub);
 
     // 生成next数组并打印
     int* next = getNext(sub);
-    printf("Next数组:");
+    printf("Next数组：\n");
     printNext(next, sub->len);
 
     // 执行KMP匹配

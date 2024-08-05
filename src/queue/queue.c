@@ -21,6 +21,7 @@ Node* initQueue()
     return queue;
 }
 
+// 入队——尾插
 void enQueue(Node* queue, int data)
 {
     Node* node = (Node*)malloc(sizeof(Node));
@@ -52,6 +53,7 @@ int isEmpty(Node* queue)
     }
 }
 
+// 出队——先进先出
 int deQueue(Node* queue)
 {
     if(isEmpty(queue))
@@ -65,8 +67,6 @@ int deQueue(Node* queue)
         int data = node->data;
 
         queue->next = node->next;
-
-        node->next = NULL;
 
         free(node);
 
@@ -91,33 +91,33 @@ int main()
 {
     // 初始化队列
     Node* queue = initQueue();
-    printf("初始化队列: ");
+    printf("初始化队列: \n");
     printQueue(queue);
 
     // 入队
     enQueue(queue, 1);
     enQueue(queue, 2);
     enQueue(queue, 3);
-    printf("入队 1, 2, 3: ");
+    printf("入队 1, 2, 3: \n");
     printQueue(queue);
 
     // 出队
     int dequeued = deQueue(queue);
     if (dequeued != ERRORS)
         printf("出队元素: %d\n", dequeued);
-    printf("出队后: ");
+    printf("出队后: \n");
     printQueue(queue);
 
     dequeued = deQueue(queue);
     if (dequeued != ERRORS)
         printf("出队元素: %d\n", dequeued);
-    printf("出队后: ");
+    printf("出队后: \n");
     printQueue(queue);
 
     dequeued = deQueue(queue);
     if (dequeued != ERRORS)
         printf("出队元素: %d\n", dequeued);
-    printf("出队后: ");
+    printf("出队后: \n");
     printQueue(queue);
 
     // 检查队列是否为空
