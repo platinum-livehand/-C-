@@ -1,16 +1,35 @@
 {
-    "cmake.cmakePath": "/usr/bin/cmake",
-    "cmake.generator": "Unix Makefiles",
-    "cmake.configureOnOpen": true,
-    "cmake.buildDirectory": "${workspaceFolder}/build",
-    "cmake.sourceDirectory": "${workspaceFolder}",
-    "cmake.defaultBuildType": "Debug",
-    "cmake.loggingLevel": "DEBUG",
-    "cmake.configureArgs": [
-      "-DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE",
-      "-DCMAKE_C_COMPILER=/usr/bin/gcc",
-      "-DCMAKE_CXX_COMPILER=/usr/bin/g++"
-    ],
-    "cmake.buildArgs": [],
-    "cmake.buildToolArgs": []
-  }
+  // CMake 路径和生成器
+  "cmake.cmakePath": "/usr/bin/cmake",
+  "cmake.generator": "Unix Makefiles",
+
+  // CMake 配置和构建目录
+  "cmake.configureOnOpen": true,
+  "cmake.buildDirectory": "${workspaceFolder}/build",
+  "cmake.sourceDirectory": "${workspaceFolder}",
+
+  // "cmake.defaultBuildType": "debug",
+
+  // CMake 日志级别
+  "cmake.loggingLevel": "debug",
+
+  // CMake 配置参数
+  "cmake.configureArgs": [
+    "-DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE",
+    "-DCMAKE_C_COMPILER=/usr/bin/gcc",
+    "-DCMAKE_CXX_COMPILER=/usr/bin/g++"
+  ],
+
+  // CMake 构建参数
+  "cmake.buildArgs": [],
+  "cmake.buildToolArgs": [],
+
+  // C++ IntelliSense 设置
+  "C_Cpp.intelliSenseEngine": "default",
+  "C_Cpp.default.compilerPath": "/usr/bin/gcc",
+  "C_Cpp.default.includePath": [
+      "${workspaceFolder}/**",
+      "/usr/include",
+      "/usr/local/include"
+  ]
+}
