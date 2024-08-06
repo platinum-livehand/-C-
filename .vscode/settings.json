@@ -8,10 +8,8 @@
   "cmake.buildDirectory": "${workspaceFolder}/build",
   "cmake.sourceDirectory": "${workspaceFolder}",
 
-  // "cmake.defaultBuildType": "debug",
-
   // CMake 日志级别
-  "cmake.loggingLevel": "debug",
+  "cmake.loggingLevel": "info",
 
   // CMake 配置参数
   "cmake.configureArgs": [
