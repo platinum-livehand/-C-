@@ -14,6 +14,7 @@ set(PROJECT_SUBDIRECTORIES
     kmp  
     tree  
     tree_level_traverse  
+    tree_non_recursive
 )  
 
 foreach(project_subdir  ${PROJECT_SUBDIRECTORIES})  

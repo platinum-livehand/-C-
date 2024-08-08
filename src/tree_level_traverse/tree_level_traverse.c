@@ -20,7 +20,7 @@ typedef struct QueueNode
     struct QueueNode* next;
 }QueueNode;
 
-void createTree(TreeNode** tNode, const char* data, int* index)
+void createTree(TreeNode** root, const char* data, int* index)
 {
     char ch = data[*index];
 
@@ -28,50 +28,50 @@ void createTree(TreeNode** tNode, const char* data, int* index)
 
     if(ch == '#')
     {
-        *tNode = NULL;
+        *root = NULL;
     }
     else
     {
-        *tNode = (TreeNode*)malloc(sizeof(TreeNode));
+        *root = (TreeNode*)malloc(sizeof(TreeNode));
 
-        (*tNode)->data = ch;
+        (*root)->data = ch;
 
-        createTree(&((*tNode)->lchild), data, index);
+        createTree(&((*root)->lchild), data, index);
         
-        createTree(&((*tNode)->rchild), data, index);
+        createTree(&((*root)->rchild), data, index);
     }
 }
 
 // 前序
-void preOrder(TreeNode* tNode)
+void preOrder(TreeNode* root)
 {
-    if(tNode == NULL)
+    if(root == NULL)
     {
         return;
     }
     else
     {
-        printf("%c ", tNode->data);
+        printf("%c ", root->data);
 
-        preOrder(tNode->lchild);
+        preOrder(root->lchild);
 
-        preOrder(tNode->rchild);
+        preOrder(root->rchild);
     }
 }
 
-void freeTree(TreeNode* tNode)
+void freeTree(TreeNode* root)
 {
-    if (tNode == NULL)
+    if (root == NULL)
     {
         return;
     }
     else
     {
-        freeTree(tNode->lchild);
+        freeTree(root->lchild);
 
-        freeTree(tNode->rchild);
+        freeTree(root->rchild);
 
-        free(tNode);
+        free(root);
     }
 }
 
@@ -100,11 +100,11 @@ int isEmpty(QueueNode* qNode)
 }
 
 // 进队——尾插
-void enQueue(TreeNode* tNode, QueueNode* qNode)
+void enQueue(TreeNode* root, QueueNode* qNode)
 {
     QueueNode* tempNode = (QueueNode*)malloc(sizeof(QueueNode));
 
-    tempNode->data = tNode;
+    tempNode->data = root;
     tempNode->pre = qNode->pre;
     tempNode->next = qNode;
 
@@ -134,9 +134,9 @@ QueueNode* deQueue(QueueNode* qNode)
 }
 
 // 层次遍历
-void levelTraverse(TreeNode* tNode, QueueNode* qNode)
+void levelTraverse(TreeNode* root, QueueNode* qNode)
 {
-    enQueue(tNode, qNode);
+    enQueue(root, qNode);
     while (!isEmpty(qNode))
     {
         QueueNode* tempNode = deQueue(qNode);
