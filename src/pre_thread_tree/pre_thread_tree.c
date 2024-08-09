@@ -85,6 +85,7 @@ void preOrderThreadTraversal(TreeNode* root)
 
         root = getNext(root);
     }
+    printf("\n");
 }
 
 void freeThreadedTree(TreeNode* root) 
@@ -105,7 +106,7 @@ int main()
 {
     TreeNode* root = NULL;
     int index = 0;
-    const char* data = "ABD##E##CF##G##";
+    const char* data = "ABD#F##E##C##";
     
     createTree(&root, data, &index);
 
@@ -114,7 +115,7 @@ int main()
 
     printf("Pre-order thread traversal: ");
     preOrderThreadTraversal(root);
-    printf("\n");
+    
 
     freeThreadedTree(root);
 

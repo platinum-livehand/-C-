@@ -52,7 +52,7 @@ void inThreadTree(TreeNode* root, TreeNode** pre)
         root->ltag = TRUE;
     }
 
-    if(*pre != NULL && (*pre)->rchild == NULL)
+    if((*pre) != NULL && (*pre)->rchild == NULL)
     {
         (*pre)->rchild = root;
         (*pre)->rtag = TRUE;
@@ -65,7 +65,7 @@ void inThreadTree(TreeNode* root, TreeNode** pre)
 
 TreeNode* getFirst(TreeNode* root)
 {
-    while (root != NULL && root->ltag == FALSE)
+    while (root->ltag == FALSE)
     {
         root = root->lchild;
     }
@@ -112,13 +112,16 @@ void freeThreadedTree(TreeNode* root)
 
 int main() 
 {
-    const char* data = "ABD##E##CF##G##";
+    const char* data = "ABD#F##E##C##";
     int index = 0;
     TreeNode* root = NULL;
     createTree(&root, data, &index);
 
     TreeNode* pre = NULL;
     inThreadTree(root, &pre);
+
+    pre->rchild = NULL;
+    pre->rtag = TRUE;
 
     printf("In-order thread traversal: ");
     inOrderThreadTraversal(root);
