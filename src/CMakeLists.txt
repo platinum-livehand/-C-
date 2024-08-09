@@ -16,6 +16,7 @@ set(PROJECT_SUBDIRECTORIES
     tree_level_traverse  
     tree_non_recursive
     in_thread_tree
+    pre_thread_tree
 )  
 
 foreach(project_subdir  ${PROJECT_SUBDIRECTORIES})  

@@ -37,14 +37,12 @@ void createTree(TreeNode** root, const char* data, int* index)
     }
 }
 
-void inThreadTree(TreeNode* root, TreeNode** pre)
+void preThreadTree(TreeNode* root, TreeNode** pre)
 {
     if(root == NULL)
     {
         return;
     }
-
-    inThreadTree(root->lchild, pre);
 
     if(root->lchild == NULL)
     {
@@ -52,7 +50,7 @@ void inThreadTree(TreeNode* root, TreeNode** pre)
         root->ltag = TRUE;
     }
 
-    if(*pre != NULL && (*pre)->rchild == NULL)
+    if((*pre) != NULL && (*pre)->rchild == NULL)
     {
         (*pre)->rchild = root;
         (*pre)->rtag = TRUE;
@@ -60,68 +58,63 @@ void inThreadTree(TreeNode* root, TreeNode** pre)
 
     *pre = root;
 
-    inThreadTree(root->rchild, pre);
-}
-
-TreeNode* getFirst(TreeNode* root)
-{
-    while (root != NULL && root->ltag == FALSE)
+    if(root->ltag == FALSE)
     {
-        root = root->lchild;
+        preThreadTree(root->lchild, pre);
     }
-    
-    return root;
+    preThreadTree(root->rchild, pre);
 }
 
 TreeNode* getNext(TreeNode* root)
 {
-    if(root->rtag == TRUE)
+    if(root->rtag == TRUE || root->ltag == TRUE)
     {
         return root->rchild;
     }
     else
     {
-        return getFirst(root->rchild);
+        return root->lchild;
     }
 }
 
-void inOrderThreadTraversal(TreeNode* root) 
+void preOrderThreadTraversal(TreeNode* root) 
 {
-    TreeNode* node = getFirst(root);
-
-    while (node != NULL) 
+    while (root != NULL)
     {
-        printf("%c ", node->data);
-        node = getNext(node);
+        printf("%c ", root->data);
+
+        root = getNext(root);
     }
-    printf("\n");
 }
 
 void freeThreadedTree(TreeNode* root) 
 {
-    TreeNode* curr = getFirst(root);
-    TreeNode* next = NULL; 
-    
-    while (curr != NULL) 
+    TreeNode* next = NULL;
+
+    while (root != NULL)
     {
-        next = getNext(curr);
-        free(curr);
-        curr = next;
+        next = getNext(root);
+
+        free(root);
+
+        root = next;
     }
 }
 
-int main() 
+int main()
 {
-    const char* data = "ABD##E##CF##G##";
-    int index = 0;
     TreeNode* root = NULL;
+    int index = 0;
+    const char* data = "ABD##E##CF##G##";
+    
     createTree(&root, data, &index);
 
     TreeNode* pre = NULL;
-    inThreadTree(root, &pre);
+    preThreadTree(root, &pre);
 
-    printf("In-order thread traversal: ");
-    inOrderThreadTraversal(root);
+    printf("Pre-order thread traversal: ");
+    preOrderThreadTraversal(root);
+    printf("\n");
 
     freeThreadedTree(root);
 
