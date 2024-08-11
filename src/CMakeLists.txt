@@ -18,8 +18,9 @@ set(PROJECT_SUBDIRECTORIES
     in_thread_tree
     pre_thread_tree
     post_thread_tree
+    binary_search_tree
 )  
 
-foreach(project_subdir  ${PROJECT_SUBDIRECTORIES})  
-    add_subdirectory(${project_subdir})  
+foreach(SUBDIR  ${PROJECT_SUBDIRECTORIES})  
+    add_subdirectory(${SUBDIR})  
 endforeach()
