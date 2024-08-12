@@ -19,6 +19,7 @@ set(PROJECT_SUBDIRECTORIES
     pre_thread_tree
     post_thread_tree
     binary_search_tree
+    avl_tree
 )  
 
 foreach(SUBDIR  ${PROJECT_SUBDIRECTORIES})  

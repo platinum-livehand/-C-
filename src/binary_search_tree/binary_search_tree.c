@@ -68,6 +68,20 @@ void preOrder(TreeNode* root)
     preOrder(root->rchild);
 }
 
+void freeTree(TreeNode* root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    freeTree(root->lchild);
+
+    freeTree(root->rchild);
+
+    free(root);
+}
+
 int main(int argc, char* argv[])
 {
     TreeNode* root = NULL;
@@ -93,6 +107,8 @@ int main(int argc, char* argv[])
     {
         printf("Node not found.\n");
     }
+
+    freeTree(root);
 
     return 0;
 }
