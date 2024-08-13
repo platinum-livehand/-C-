@@ -20,6 +20,7 @@ set(PROJECT_SUBDIRECTORIES
     post_thread_tree
     binary_search_tree
     avl_tree
+    huffman_tree
 )  
 
 foreach(SUBDIR  ${PROJECT_SUBDIRECTORIES})  

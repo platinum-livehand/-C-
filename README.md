@@ -1,2 +1,1 @@
-# Data Structure Based on C
-
+# Understanding Data Structure Theory Based on C.
