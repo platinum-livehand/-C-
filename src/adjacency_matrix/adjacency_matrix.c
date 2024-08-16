@@ -107,6 +107,7 @@ void createGraph(Graph* graph, char* vexs, int* arcs)
     graph->arcNum /= 2;
 }
 
+// 深度优先
 void DFS(Graph* graph, int* visited, int index)
 {
     printf("%c ", graph->vexs[index]);
@@ -123,6 +124,7 @@ void DFS(Graph* graph, int* visited, int index)
     }
 }
 
+// 广度优先
 void BFS(Graph* graph, int* visited, int index)
 {
     printf("%c ", graph->vexs[index]);

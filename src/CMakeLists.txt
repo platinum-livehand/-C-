@@ -22,6 +22,7 @@ set(PROJECT_SUBDIRECTORIES
     avl_tree
     huffman_tree
     adjacency_matrix
+    prim
 )  
 
 foreach(SUBDIR  ${PROJECT_SUBDIRECTORIES})  
