@@ -24,6 +24,7 @@ set(PROJECT_SUBDIRECTORIES
     adjacency_matrix
     prim
     kruskal
+    dijkstra
 )  
 
 foreach(SUBDIR  ${PROJECT_SUBDIRECTORIES})  

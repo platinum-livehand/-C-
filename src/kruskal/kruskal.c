@@ -7,7 +7,9 @@ typedef struct Graph
 {
     char* vexs;
     int** arcs;
+    // vertex 顶点的个数
     int vexNum;
+    // arc 弧的个数
     int arcNum;
 } Graph;
 
@@ -46,6 +48,7 @@ void sortEdge(Edge* edge, Graph* graph)
 {
     Edge temp;
 
+    // 冒泡排序
     for (int i = 0; i < graph->arcNum - 1; i++)
     {
         for (int j = 0; j < graph->arcNum - 1 - i; j++)
@@ -62,11 +65,11 @@ void sortEdge(Edge* edge, Graph* graph)
 
 void kruskal(Graph* graph)
 {
-    // 连通数组
+    // 连通数组--初始状态只需要不重复即可
     int* connected = (int*)malloc(sizeof(int) * graph->vexNum);
     for (int i = 0; i < graph->vexNum; i++)
     {
-        connected[i] = i;
+        connected[i] = i + 7;
     }
 
     Edge* edge = initEdge(graph);
