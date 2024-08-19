@@ -37,7 +37,7 @@ void createGraph(Graph* graph, char* vexs, int* arcs)
         {
             graph->arcs[i][j] = *(arcs + i * graph->vexNum + j);
 
-            if (graph->arcs[i][j] != 0 && graph->arcs[i][j] != M)
+            if (graph->arcs[i][j] != M && graph->arcs[i][j] > 0 )
             {
                 graph->arcNum++;
             }
@@ -67,7 +67,7 @@ void DFS(Graph* graph, int* visited, int index)
 
     for (int i = 0; i < graph->vexNum; i++)
     {
-        if (visited[i] != 1 && graph->arcs[index][i] != 0 && graph->arcs[index][i] != M)
+        if (visited[i] != 1 && graph->arcs[index][i] != M && graph->arcs[index][i] > 0)
         {
             DFS(graph, visited, i);
         }
@@ -94,8 +94,13 @@ int getMin(Graph* graph, int* d, int* s)
 
 void dijkstra(Graph* graph, int index)
 {
+    // shortest path set：标记哪些节点的最短路径已经被计算过
     int* s = (int*)malloc(sizeof(int) * graph->vexNum);
+
+    // parent array：用于保存每个节点的前驱节点，以便在找到最短路径后进行路径回溯
     int* p = (int*)malloc(sizeof(int) * graph->vexNum);
+
+    // distance array：表示从源节点到每个节点的当前最短距离的数组
     int* d = (int*)malloc(sizeof(int) * graph->vexNum);
 
     for (int i = 0; i < graph->vexNum; i++)

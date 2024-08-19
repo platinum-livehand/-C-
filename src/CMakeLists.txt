@@ -25,6 +25,7 @@ set(PROJECT_SUBDIRECTORIES
     prim
     kruskal
     dijkstra
+    floyd
 )  
 
 foreach(SUBDIR  ${PROJECT_SUBDIRECTORIES})  
