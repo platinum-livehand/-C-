@@ -26,6 +26,7 @@ set(PROJECT_SUBDIRECTORIES
     kruskal
     dijkstra
     floyd
+    topo_logical_sort
 )  
 
 foreach(SUBDIR  ${PROJECT_SUBDIRECTORIES})  
