@@ -3,24 +3,24 @@
   "cmake.cmakePath": "/usr/bin/cmake",
   "cmake.generator": "Unix Makefiles",
 
-  // CMake 配置和构建目录
-  "cmake.configureOnOpen": true,
-  "cmake.buildDirectory": "${workspaceFolder}/build",
-  "cmake.sourceDirectory": "${workspaceFolder}",
+  // CMake 配置和构建目录（已在 设置 —— 拓展 —— CMake Tools 中设置）
+  // "cmake.configureOnOpen": true, // 打开 VSCode 自动执行 CMake 指令
+  // "cmake.buildDirectory": "${workspaceFolder}/build",
+  // "cmake.sourceDirectory": "${workspaceFolder}",
 
   // CMake 日志级别
   "cmake.loggingLevel": "info",
 
-  // CMake 配置参数
-  "cmake.configureArgs": [
-    "-DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE",
-    "-DCMAKE_C_COMPILER=/usr/bin/gcc",
-    "-DCMAKE_CXX_COMPILER=/usr/bin/g++"
-  ],
+  // CMake 配置参数（已在 CMakeLists.txt 中设置）
+  // "cmake.configureArgs": [
+  //   "-DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE",
+  //   "-DCMAKE_C_COMPILER=/usr/bin/gcc",
+  //   "-DCMAKE_CXX_COMPILER=/usr/bin/g++"
+  // ],
 
   // CMake 构建参数
-  "cmake.buildArgs": [],
-  "cmake.buildToolArgs": [],
+  // "cmake.buildArgs": [],
+  // "cmake.buildToolArgs": [],
 
   // C++ IntelliSense 设置
   "C_Cpp.intelliSenseEngine": "default",

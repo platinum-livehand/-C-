@@ -6,21 +6,33 @@ project(data_structure
     HOMEPAGE_URL "https://github.com/platinum-livehand/Data-Structure.git"
     LANGUAGES C CXX
 )
-
+    
 # 检测操作系统
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
     message(STATUS "Configuring on/for Linux")
+    # 设置编译器
+    set(CMAKE_C_COMPILER "/usr/bin/gcc")  
+    set(CMAKE_CXX_COMPILER "/usr/bin/g++")  
+
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
     message(STATUS "Configuring on/for macOs")
+    # 设置编译器
+
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
     message(STATUS "Configuring on/for Windows")
+    # 设置编译器
+
 elseif(CMAKE_SYSTEM_NAME STREQUAL "AIX")
     message(STATUS "Configuring on/for IBM AIX")
+    # 设置编译器
+
 else()
     message(STATUS "Configuring on/for ${CMAKE_SYSTEM_NAME}")
+    # 设置编译器
+
 endif()
 
-# 检查空指针类型的大小
+# 检查空指针类型的大小判断操作系统的位数
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
     message(STATUS "Target is 64 bits")
 else()
