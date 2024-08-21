@@ -27,6 +27,7 @@ set(PROJECT_SUBDIRECTORIES
     dijkstra
     floyd
     topo_logical_sort
+    critical_path
 )  
 
 foreach(SUBDIR  ${PROJECT_SUBDIRECTORIES})  

@@ -19,7 +19,7 @@ StackNode* initStack()
 
 int isEmpty(StackNode* head)
 {
-    if (head->next)
+    if (head->next || head->data != 0)
     {
         return 0;
     }
