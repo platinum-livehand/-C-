@@ -28,6 +28,7 @@ set(PROJECT_SUBDIRECTORIES
     floyd
     topo_logical_sort
     critical_path
+    sequence_search
 )  
 
 foreach(SUBDIR  ${PROJECT_SUBDIRECTORIES})  
