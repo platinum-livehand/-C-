@@ -11,9 +11,9 @@ typedef struct List
 List* initList(int length)
 {
     List* list = (List*)malloc(sizeof(List));
-    list->data = (int*)malloc(sizeof(int) * (length + 1)); // +1 为哨兵留出位置
-    list->length = length + 1;
-    list->num = 1;
+    list->data = (int*)malloc(sizeof(int) * length);
+    list->length = length;
+    list->num = 0;
 
     return list;
 }
@@ -35,34 +35,42 @@ void printList(List* list)
     printf("\n");
 }
 
-int sequenceSearch(List* list, int value)
-{
-    list->data[0] = value;  // 将哨兵放在最后一个位置
-
-    int i = list->num - 1;
-    
-    while (list->data[i] != value)
-    {
-        i--;
-    }
-
-    // 检查是否是哨兵找到的
-    if (i == 0)
-    {
-        return -1;  // 未找到
-    }
-
-    return i; // 返回实际找到的位置
-}
-
 void freeList(List* list)
 {
     free(list->data);
     free(list);
 }
 
-int main(int argc, char* argv[])  
-{  
+int binarySearch(List* list, int value)
+{
+    int start = 0;
+    int end = list->num - 1;
+    int mid;
+    
+    while (start <= end)
+    {
+        mid = (start + end) / 2;
+
+        if (list->data[mid] > value)
+        {
+            end = mid - 1;
+        }
+        else if (list->data[mid] < value)
+        {
+            start = mid + 1;
+        }
+        else
+        {
+            return mid;
+        }
+    }
+    
+    return -1;
+}
+
+int main(int argc, char* argv[])
+{
+    // 测试程序  
     List* myList = initList(5);  
     listAdd(myList, 10);  
     listAdd(myList, 20);  
@@ -72,8 +80,8 @@ int main(int argc, char* argv[])
     
     printList(myList);  
 
-    int searchValue = 10;  
-    int index = sequenceSearch(myList, searchValue);  
+    int searchValue = 50;  
+    int index = binarySearch(myList, searchValue);  
     if (index != -1)  
     {  
         printf("Value %d found at index %d.\n", searchValue, index);  
@@ -83,7 +91,7 @@ int main(int argc, char* argv[])
         printf("Value %d not found in the list.\n", searchValue);  
     }  
 
-    freeList(myList);  
+    freeList(myList); // 释放分配的内存 
 
-    return 0;  
-} 
+    return 0;
+}

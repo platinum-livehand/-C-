@@ -11,9 +11,9 @@ typedef struct List
 List* initList(int length)
 {
     List* list = (List*)malloc(sizeof(List));
-    list->data = (int*)malloc(sizeof(int) * (length + 1)); // +1 为哨兵留出位置
-    list->length = length + 1;
-    list->num = 1;
+    list->data = (int*)malloc(sizeof(int) * length);
+    list->length = length;
+    list->num = 0;
 
     return list;
 }
@@ -26,6 +26,12 @@ void listAdd(List* list, int data)
     }
 }
 
+void freeList(List* list)
+{
+    free(list->data);
+    free(list);
+}
+
 void printList(List* list)
 {
     for (int i = 0; i < list->num; i++)
@@ -35,34 +41,32 @@ void printList(List* list)
     printf("\n");
 }
 
-int sequenceSearch(List* list, int value)
+int binarySearchRecursion(List* list, int value, int start, int end)
 {
-    list->data[0] = value;  // 将哨兵放在最后一个位置
+    int mid = (start + end) / 2;
 
-    int i = list->num - 1;
+    if (start == end && list->data[mid] != value)
+    {
+        return -1;
+    }
     
-    while (list->data[i] != value)
+    if (list->data[mid] > value)
     {
-        i--;
+        return binarySearchRecursion(list, value, start, mid - 1);
     }
-
-    // 检查是否是哨兵找到的
-    if (i == 0)
+    else if (list->data[mid] < value)
     {
-        return -1;  // 未找到
+        return binarySearchRecursion(list, value, mid + 1, end);
     }
-
-    return i; // 返回实际找到的位置
+    else
+    {
+        return mid;
+    }
 }
 
-void freeList(List* list)
+int main(int argc, char* argv[])
 {
-    free(list->data);
-    free(list);
-}
-
-int main(int argc, char* argv[])  
-{  
+    // 测试程序  
     List* myList = initList(5);  
     listAdd(myList, 10);  
     listAdd(myList, 20);  
@@ -73,7 +77,7 @@ int main(int argc, char* argv[])
     printList(myList);  
 
     int searchValue = 10;  
-    int index = sequenceSearch(myList, searchValue);  
+    int index = binarySearchRecursion(myList, searchValue, 0, myList->num - 1);  
     if (index != -1)  
     {  
         printf("Value %d found at index %d.\n", searchValue, index);  
@@ -83,7 +87,7 @@ int main(int argc, char* argv[])
         printf("Value %d not found in the list.\n", searchValue);  
     }  
 
-    freeList(myList);  
+    freeList(myList); // 释放分配的内存 
 
-    return 0;  
-} 
+    return 0;
+}

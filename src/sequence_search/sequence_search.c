@@ -24,10 +24,6 @@ void listAdd(List* list, int data)
     {
         list->data[list->num++] = data;
     }
-    else
-    {
-        return;
-    }
 }
 
 void printList(List* list)

@@ -29,6 +29,7 @@ set(PROJECT_SUBDIRECTORIES
     topo_logical_sort
     critical_path
     sequence_search
+    binary_search
 )  
 
 foreach(SUBDIR  ${PROJECT_SUBDIRECTORIES})  
