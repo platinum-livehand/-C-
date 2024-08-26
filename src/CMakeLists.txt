@@ -30,6 +30,8 @@ set(PROJECT_SUBDIRECTORIES
     critical_path
     sequence_search
     binary_search
+    b_tree
+    hash_list
 )  
 
 foreach(SUBDIR  ${PROJECT_SUBDIRECTORIES})  
