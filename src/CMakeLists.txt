@@ -32,6 +32,10 @@ set(PROJECT_SUBDIRECTORIES
     binary_search
     b_tree
     hash_list
+    insert_sort
+    shell_sort
+    bubble_sort
+    quick_sort
 )  
 
 foreach(SUBDIR  ${PROJECT_SUBDIRECTORIES})  
