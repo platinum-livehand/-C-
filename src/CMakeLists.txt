@@ -1,8 +1,6 @@
 project(source_file)  
 
 set(PROJECT_SUBDIRECTORIES  
-    hello_Linux  
-    hello_data_structure  
     single_link_list  
     loop_link_list  
     double_link_list  
